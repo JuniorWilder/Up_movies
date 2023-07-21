@@ -12,8 +12,8 @@ export const InputForm = (props) => {
                 id={nomeLabel}
                 type="text"
                 className="form-control"
-                //value={fields.genero}
-                //onChange={atualizaInput} 
+                value={props.value}
+                onChange={props.change} 
                 />
         </div>
     )
