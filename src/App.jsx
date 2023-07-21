@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { InputForm } from "./components/inputForm"
+import { Button } from "./components/button"
 
 function App() {
   const [fields, setFields] = useState({
@@ -19,6 +21,15 @@ function App() {
   setFields({ ...fields, [event.target.id]: event.target.value })
   }
 
+  const enviar = event => {
+    event.preventDefault()
+    console.log('enviar');
+  }
+  const limpar = event => {
+    event.preventDefault()
+    console.log('limpar');
+  }
+
   // const atualizaInput = event => {
   //   console.log('atualizando', event.target.value);
   //   setTitulo(event.target.value)
@@ -34,34 +45,16 @@ function App() {
       <div className="container">
         <h2 className="mt-3 mb-3">Cadastro de Filmes</h2>
         <form className="row g-3">
-          <div className="col-md-12">
-            <label htmlFor="titulo" className="form-label">Título</label>
-            <input
-              id="titulo"
-              type="text"
-              className="form-control"
-              value={fields.titulo}
-              onChange={atualizaInput} />
+          <InputForm nome='Titulo' width={10} />
+          <InputForm nome='Gênero' width={2} />
+          <InputForm nome='Diretor' width={6} />
+          <InputForm nome='Sinopse' width={2} />
+          <InputForm nome='Votos' width={1} />
+          <div className="row mt-3">
+          <Button tipo={'submi'} nome='Enviar' width={1} click={enviar}/>
+          <Button tipo={'reset'} nome='Limpar' width={1} click={limpar}/>
           </div>
-          <div className="col-md-12">
-            <label htmlFor="sinopse" className="form-label">Sinopse</label>
-            <input
-              id="sinopse"
-              type="text"
-              className="form-control"
-              value={fields.sinopse}
-              onChange={atualizaInput} />
-          </div>
-          <div className="col-md-12">
-            <label htmlFor="votos" className="form-label">Votos</label>
-            <input
-              id="votos"
-              type="text"
-              className="form-control"
-              value={fields.votos}
-              onChange={atualizaInput} />
-          </div>
-          <button className="btn btn-primary col-md-3" onClick={adicionar}>Adiconar</button>
+          
         </form>
       </div>
     </>
